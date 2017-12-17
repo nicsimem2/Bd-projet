@@ -1,4 +1,4 @@
-USE  TennisTreNi
+USE ProjetBD2017
 GO
 
 PRINT('ADDING ALL PRIMARY KEY, SECONDARY KEY AND CHECKS')
@@ -237,7 +237,7 @@ CHECK ( pointsJoueur >=0);
 PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAfrique"')
 GO
 
---Amérique du nord check/default
+--Amï¿½rique du nord check/default
 ALTER TABLE tblJoueursAmeriqueNord
 ADD CONSTRAINT DEF_JoueursPointsAmeriqueNord
 DEFAULT 0 FOR pointsJoueur
@@ -251,7 +251,7 @@ PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAmeriqueNord"')
 GO
 
 
---Amérique du sud check/default
+--Amï¿½rique du sud check/default
 ALTER TABLE tblJoueursAmeriqueSud
 ADD CONSTRAINT DEF_JoueursPointsAmeriqueSud
 DEFAULT 0 FOR pointsJoueur
@@ -313,7 +313,7 @@ GO
 ALTER TABLE tblZoneGeographique
 ADD CONSTRAINT ck_ZoneGeographique
 CHECK ( codeZone>=0 AND codeZone<=6);
-PRINT('Check "codeZone" plus grand ou égal a 0 et plus petit ou egal a 6 dans "tblZoneGeographique".')
+PRINT('Check "codeZone" plus grand ou ï¿½gal a 0 et plus petit ou egal a 6 dans "tblZoneGeographique".')
 GO
 
 --TblTournoi
@@ -326,7 +326,7 @@ GO
 ALTER TABLE tblTournoi
 ADD CONSTRAINT ck_Tournoi
 CHECK ( bourseTournoi>=50000 );
-PRINT('Check "codeZone" plus grand ou égal a 50 000 dans "tblTournoi".')
+PRINT('Check "codeZone" plus grand ou ï¿½gal a 50 000 dans "tblTournoi".')
 GO
 
 --tblResultat
@@ -341,3 +341,4 @@ ADD CONSTRAINT ck_Txbourse_TypeResultats
 CHECK ( txBourse>0 AND txBourse<=1);
 PRINT('Check "txBourse" plus grand que 0 et plus petit ou egal a 1 dans "tblTournoi".')
 GO
+PRINT('KAWAI A.F. BOI!')

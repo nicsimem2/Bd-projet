@@ -1,30 +1,32 @@
 USE MASTER
 GO
-
 USE [master];
 DECLARE @kill varchar(8000) = '';  
 SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
 FROM sys.dm_exec_sessions
-WHERE database_id  = db_id('TennisTreNi')
-
+WHERE database_id  = db_id('ProjetDB2017')
 EXEC(@kill);
-
-IF EXISTS(SELECT*FROM sys.databases WHERE name='TennisTreNi')
-DROP DATABASE TennisTreNi;
 GO
-
-
-CREATE DATABASE TennisTreNi ON PRIMARY
-(NAME ='TennisTreNi_Data',
-FILENAME='C:\BD\TennisTreNi.mdf',
-SIZE =10MB ,MAXSIZE =UNLIMITED,FILEGROWTH =10%)
+IF EXISTS(SELECT*FROM sys.databases WHERE name='ProjetBD2017')
+DROP DATABASE ProjetBD2017;
+GO
+CREATE DATABASE ProjetBD2017 ON PRIMARY
+  --CHANGE THE PATH FOR WINDOW THIS FOLDER IS ON DOCKER WITH PERM 777--
+(NAME = ProjetBD2017_dat,
+FILENAME = 'C:\BD\Tennis_ppal.mdf',
+SIZE = 10,
+MAXSIZE = UNLIMITED,
+FILEGROWTH = 10)
 LOG ON
-(NAME ='TennisTreNi_Log',
-FILENAME='C:\BD\TennisTreNi_Log.ldf',
-SIZE =5MB ,MAXSIZE =25MB ,FILEGROWTH =5% )
-PRINT('DATABASE CREATED : TennisTreNi ')
+(NAME = Tennis_log,
+FILENAME = 'C:\BD\Tennis_log.ldf',
+SIZE = 5,
+MAXSIZE = 25,
+FILEGROWTH = 5)
+PRINT('DATABASE CREATED : Tennis ')
+
 GO
-USE TennisTreNi
+USE ProjetBD2017
 GO
 
 
