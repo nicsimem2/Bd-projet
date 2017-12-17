@@ -172,8 +172,6 @@ ON UPDATE NO ACTION;
 PRINT('foreign key "codeResultat" in "tblResultats" added')
 GO
 
-
---WTF I NEED MORE VODKA
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursAfrique
 FOREIGN KEY(noJoueur)
@@ -225,14 +223,121 @@ GO
 PRINT('cheeky breeky')
 GO
 
+--Afrique check/default
+
+ALTER TABLE tblJoueursAfrique
+ADD CONSTRAINT DEF_JoueursPointsAfrique
+DEFAULT 0 FOR pointsJoueur
+PRINT('"pointsJoueur" default =0 dans "tblJoueursAfrique"')
+GO
+
+ALTER TABLE tblJoueursAfrique
+ADD CONSTRAINT ck_JoueursPointsAfrique
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAfrique"')
+GO
+
+--Amérique du nord check/default
+ALTER TABLE tblJoueursAmeriqueNord
+ADD CONSTRAINT DEF_JoueursPointsAmeriqueNord
+DEFAULT 0 FOR pointsJoueur
+PRINT(' "pointsJoueur" default =0 dans "tblJoueursAmeriqueNord"')
+GO
+
+ALTER TABLE tblJoueursAmeriqueNord
+ADD CONSTRAINT ck_JoueursPointsAmeriqueNord
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAmeriqueNord"')
+GO
 
 
+--Amérique du sud check/default
+ALTER TABLE tblJoueursAmeriqueSud
+ADD CONSTRAINT DEF_JoueursPointsAmeriqueSud
+DEFAULT 0 FOR pointsJoueur
+PRINT('"pointsJoueur" default =0 dans "tblJoueursAmeriqueSud".')
+GO
 
+ALTER TABLE tblJoueursAmeriqueSud
+ADD CONSTRAINT ck_JoueursPointsAmeriqueSud
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAmeriqueSud".')
+GO
 
+--Europe check/default
+ALTER TABLE tblJoueursEurope
+ADD CONSTRAINT Def_JoueursPointsEurope
+DEFAULT 0 FOR pointsJoueur
+PRINT('"pointsJoueur" default =0 dans "tblJoueursEurope".')
+GO
 
---CHECKS
---ALTER TABLE tblCours
---ADD CONSTRAINT ck_cours_Duree
---CHECK ( Duree >=0 AND Duree <255);
---PRINT('Check duree tblCours')
+ALTER TABLE tblJoueursEurope
+ADD CONSTRAINT ck_JoueursPointsEurope
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursEurope".')
+GO
+
+--Oceanie check/default
+ALTER TABLE tblJoueursOceanie
+ADD CONSTRAINT Def_JoueursPointsOceanie
+DEFAULT 0 FOR pointsJoueur
+PRINT('"pointsJoueur" default =0 dans "tblJoueursOceanie".')
+GO
+
+ALTER TABLE tblJoueursOceanie
+ADD CONSTRAINT ck_JoueursPointsOceanie
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursOceanie".')
+GO
+
+--Asie check/default
+ALTER TABLE tblJoueursAsie
+ADD CONSTRAINT Def_JoueursPointsAsie
+DEFAULT 0 FOR pointsJoueur
+PRINT('"pointsJoueur" default =0 dans "tblJoueursAsie".')
+GO
+
+ALTER TABLE tblJoueursAsie
+ADD CONSTRAINT ck_JoueursPointsAsie
+CHECK ( pointsJoueur >=0);
+PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAsie".')
+GO
+
+--ALTER TABLE tblNationalite
+--ADD CONSTRAINT ck_Nationalite_code
+--CHECK wtf Count nb of characters in codeNationalite
+--PRINT('check "codeNationalite" =char(3) dans "tblNationalite".')
 --GO
+
+--tblZoneGeo
+ALTER TABLE tblZoneGeographique
+ADD CONSTRAINT ck_ZoneGeographique
+CHECK ( codeZone>=0 AND codeZone<=6);
+PRINT('Check "codeZone" plus grand ou égal a 0 et plus petit ou egal a 6 dans "tblZoneGeographique".')
+GO
+
+--TblTournoi
+ALTER TABLE tblTournoi
+ADD CONSTRAINT DEF_Tournoi
+DEFAULT 50000 FOR bourseTournoi
+PRINT('Default "bourseTournoi" = 50 000 dans "tblTournoi".')
+GO
+
+ALTER TABLE tblTournoi
+ADD CONSTRAINT ck_Tournoi
+CHECK ( bourseTournoi>=50000 );
+PRINT('Check "codeZone" plus grand ou égal a 50 000 dans "tblTournoi".')
+GO
+
+--tblResultat
+ALTER TABLE tblTypeResultats
+ADD CONSTRAINT ck_Point_TypeResultats
+CHECK ( nbPoints>0 );
+PRINT('Check "nbPoints" plus grand a 0  dans "tblTypeResultats".')
+GO
+
+ALTER TABLE tblTypeResultats
+ADD CONSTRAINT ck_Point_TypeResultats
+CHECK ( txBourse>0 AND txBourse<=1);
+PRINT('Check "txBourse" plus grand que 0 et plus petit ou egal a 1 dans "tblTournoi".')
+GO

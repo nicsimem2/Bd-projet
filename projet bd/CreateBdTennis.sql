@@ -36,7 +36,7 @@ CREATE TABLE tblJoueursAfrique
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL,
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursAfrique ')
@@ -49,7 +49,7 @@ CREATE TABLE tblJoueursAmeriqueNord
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL, 
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursAmeriqueNord ')
@@ -62,7 +62,7 @@ CREATE TABLE tblJoueursAmeriqueSud
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL, 
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursAmeriqueSud ')
@@ -75,7 +75,7 @@ CREATE TABLE tblJoueursAsie
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL, 
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursAsie ')
@@ -88,7 +88,7 @@ CREATE TABLE tblJoueursEurope
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL, 
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursEurope ')
@@ -101,7 +101,7 @@ CREATE TABLE tblJoueursOceanie
 noJoueur			int				    NOT NULL,  
 nomJoueur			varchar(30)			NOT NULL,		
 prenomJoueur		varchar(30)			NOT NULL,		
-pointsJoueur		int				    NULL, -- CHECK DEFAULT 0 et + grand que 0
+pointsJoueur		int				    NULL, 
 codeNationalite     char(3)				NULL,
 )
 PRINT('TABLE CREATED : tblJoueursOceanie ')
@@ -111,7 +111,7 @@ DROP TABLE dbo.tblNationalite;
 
 CREATE TABLE tblNationalite
 (
-codeNationalite     char(3)				NOT NULL, --CHECK CHAR = 3
+codeNationalite     char(3)				NOT NULL, 
 nomPays				varchar(50)			NOT NULL,
 codeZone			int					NOT NULL,
 )
@@ -122,7 +122,7 @@ DROP TABLE dbo.tblZoneGeographique;
 
 CREATE TABLE tblZoneGeographique
 (
-codeZone			int					NOT NULL, --CHECK CODEZONE ENTRE 1 ET 6
+codeZone			int					NOT NULL, 
 nomZone				varchar(40)			NOT NULL,
 )
 PRINT('TABLE CREATED : tblZoneGeographique ')
@@ -136,7 +136,7 @@ noTournoi			int IDENTITY(1,1)	NOT NULL,
 nomTournoi			varchar(50)			NOT NULL,
 vileTournoi			varchar(50)			NOT NULL,
 paysTournoi			varchar(30)			NOT NULL,
-bourseTournoi		money				NOT NULL,  -- CHECK >= 50 000 ( default 50 000)
+bourseTournoi		money				NOT NULL,  
 )
 PRINT('TABLE CREATED : tblTournoi ')
 
@@ -161,8 +161,8 @@ CREATE TABLE tblTypeResultats
 (
 codeResultat	    int					NOT NULL,
 nomResultat			varchar(30)			NOT NULL,		
-nbPoints			int					NOT NULL, --CHECK >0
-txBourse			decimal(5,2)		NOT NULL, --CHECK >0 et <=1
+nbPoints			int					NOT NULL, 
+txBourse			decimal(5,2)		NOT NULL, 
 )
 PRINT('TABLE CREATED : tblTypeResultats ')
 
@@ -185,4 +185,6 @@ noCommanditaire		 int		        NOT NULL,
 noTournoi			 int		        NOT NULL,
 )
 PRINT('TABLE CREATED : tblTournoiCommandite ')
+
+PRINT('CHEEKY BREEKY')
 
