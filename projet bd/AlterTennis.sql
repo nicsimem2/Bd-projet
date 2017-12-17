@@ -337,7 +337,7 @@ PRINT('Check "nbPoints" plus grand a 0  dans "tblTypeResultats".')
 GO
 
 ALTER TABLE tblTypeResultats
-ADD CONSTRAINT ck_Point_TypeResultats
+ADD CONSTRAINT ck_Txbourse_TypeResultats
 CHECK ( txBourse>0 AND txBourse<=1);
 PRINT('Check "txBourse" plus grand que 0 et plus petit ou egal a 1 dans "tblTournoi".')
 GO
