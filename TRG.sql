@@ -76,3 +76,4 @@ INSERT INTO dbo.VueListeJoueurs
     VALUES (100, 'MisterMoist', 'Stun', 1000, 'FRA')
 GO
 SELECT * FROM dbo.tblJoueursEurope
+

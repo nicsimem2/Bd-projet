@@ -31,16 +31,20 @@ IF EXISTS
        AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
   DROP PROCEDURE dbo.psZoneGeographique
 GO
-CREATE PROCEDURE psZoneGeographique(@unCodeNationalite CHAR(3)) AS
+CREATE PROCEDURE psZoneGeographique
+    @unCodeNationalite CHAR(3),
+    @unCodeZone        INT OUTPUT
+AS
   BEGIN
-    DECLARE @CodeZone INT
+
     SELECT dbo.tblNationalite.codeZone
     FROM dbo.tblNationalite
     WHERE dbo.tblNationalite.codeNationalite = @unCodeNationalite
-    RETURN @CodeZone
-  END
 
-EXEC pszonegeographique @uncodenationalite = 'cze'
+    RETURN
+  END
+DECLARE @output INT
+EXEC psZoneGeographique @unCodeNationalite = 'CZE', @unCodeZone = @output OUTPUT
 
 ----------#3------------------
 GO
@@ -51,13 +55,63 @@ IF EXISTS
        AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
   DROP PROCEDURE dbo.psNomTableJoueur
 GO
-CREATE PROCEDURE psNomTableJoueur(@Code CHAR(3))
+
+CREATE PROCEDURE psNomTableJoueur
+    @CodeNationalite CHAR(3)
 AS
   BEGIN
-    DECLARE @CodeZone INTEGER
-    EXECUTE psZoneGeographique @unCodeNationalite = @Code
-    SELECT dbo.tblNationalite.nomPays
-    FROM tblNationalite
-    WHERE tblNationalite.codeZone = @CodeZone
+    DECLARE @output INT
+    EXEC psZoneGeographique @unCodeNationalite = 'CZE', @unCodeZone = @output OUTPUT
+    SELECT @output
+    SELECT nomZone
+    FROM tblZoneGeographique
+    WHERE codeZone = 5
+    RETURN
   END
-EXEC pszonegeographique @uncodenationalite = 'CZE'
+DECLARE @output2 INT
+EXEC psNomTableJoueur @unCodeNationalite = 'CZE'
+--------#4-------------------
+
+
+-- TAS DE MARDE A VICTOR
+DROP PROCEDURE IF EXISTS psNomTableJoueur
+GO
+CREATE PROCEDURE psNomTableJoueur
+    @codeNationalite CHAR(3),
+    @nomTableJoueur  VARCHAR(30) OUTPUT
+AS
+  BEGIN
+    DECLARE @zone INT
+    EXEC psZoneGeographique 'FRA', @zone OUTPUT
+    PRINT (@zone)
+    IF EXISTS(SELECT *
+              FROM tblNationalite
+              WHERE dbo.tblNationalite.codeNationalite = @codeNationalite)
+      BEGIN
+        EXEC psZoneGeographique @codeNationalite, @zone OUTPUT
+        SELECT @nomTableJoueur = CASE @zone
+                                 WHEN 1
+                                   THEN 'tblJoueursAfrique'
+                                 WHEN 2
+                                   THEN 'tblJoueursNA'
+                                 WHEN 3
+                                   THEN 'tblJoueursSA'
+                                 WHEN 4
+                                   THEN 'tblJoueursAsie'
+                                 WHEN 5
+                                   THEN 'tblJoueursEU'
+                                 WHEN 6
+                                   THEN 'tblJoueursOCE'
+                                 END
+      END
+    ELSE BEGIN
+      PRINT 'Code de nationalite incorrecte'
+    END
+  END
+GO
+PRINT ''
+PRINT 'Procédure 3'
+DECLARE @tableRep VARCHAR(30)
+EXECUTE psNomTableJoueur 'FRA', @tableRep OUTPUT
+PRINT @tableRep
+
