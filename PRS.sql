@@ -11,27 +11,14 @@ IF EXISTS
 GO
 CREATE PROCEDURE psResultatsJoueurs(@noTournoi INT, @noJoueur INT, @anneeTournoi INT) AS
   BEGIN
-    DECLARE
-    @NbPoints INT,
-    @Gains MONEY
-    RETURN (
-      SELECT
-        @NbPoints = dbo.tblResultats.nbPoints,
-        @Gains = dbo.tblResultats.gains
+DECLARE @NbPoints INT, @Gains MONEY
+	SELECT dbo.tblResultats.nbPoints,dbo.tblResultats.gains
       FROM dbo.tblResultats
-      WHERE anneeTournoi = @anneeTournoi
-      AND noTournoi = @noTournoi
-      AND noJoueur = @noJoueur)
+      WHERE anneeTournoi = @anneeTournoi AND noTournoi = @noTournoi AND noJoueur = @noJoueur
+	  RETURN
+	  END
 
-  END
-EXEC psResultatsJoueurs @noTournoi = 1, @noJoueur = 1, @anneeTournoi = 2008
-
-
-SELECT
-  dbo.tblResultats.nbPoints,
-  dbo.tblResultats.gains
-FROM dbo.tblResultats
-WHERE anneeTournoi AND @noTournoi = noTournoi AND @noJoueur = noJoueur
+	  EXEC psResultatsJoueurs @noTournoi=1,@noJoueur=1,@anneeTournoi=2008
 
 -----------#2----------
 GO
@@ -45,9 +32,12 @@ GO
 CREATE PROCEDURE psZoneGeographique(@unCodeNationalite CHAR(3)) AS
   BEGIN
     DECLARE @CodeZone INT
-    RETURN (SELECT dbo.tblNationalite.codeZone
+    SELECT dbo.tblNationalite.codeZone
             FROM dbo.tblNationalite
-            WHERE dbo.tblNationalite.codeNationalite = @unCodeNationalite)
+            WHERE dbo.tblNationalite.codeNationalite = @unCodeNationalite
+			RETURN @CodeZone
   END
 
 EXEC psZoneGeographique @unCodeNationalite = 'CZE'
+
+----------#3------------------
