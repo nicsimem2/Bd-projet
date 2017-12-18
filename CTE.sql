@@ -179,14 +179,14 @@ REFERENCES tblJoueursAfrique(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
 GO
-
+/*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursANord
 FOREIGN KEY(noJoueur)
 REFERENCES tblJoueursAmeriqueNord(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
+GO*/
 
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursASud
