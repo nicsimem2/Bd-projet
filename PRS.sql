@@ -29,15 +29,45 @@ IF EXISTS
        AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
   DROP PROCEDURE dbo.psZoneGeographique
 GO
-CREATE PROCEDURE psZoneGeographique(@unCodeNationalite CHAR(3)) AS
+CREATE PROCEDURE psZoneGeographique
+@unCodeNationalite CHAR(3),
+@unCodeZone INT OUTPUT
+AS
   BEGIN
-    DECLARE @CodeZone INT
+
     SELECT dbo.tblNationalite.codeZone
             FROM dbo.tblNationalite
             WHERE dbo.tblNationalite.codeNationalite = @unCodeNationalite
-			RETURN @CodeZone
+		
+			RETURN 			
   END
+DECLARE @output int
+EXEC psZoneGeographique @unCodeNationalite='CZE',@unCodeZone=@output OUTPUT
 
-EXEC psZoneGeographique @unCodeNationalite = 'CZE'
 
 ----------#3------------------
+GO
+IF EXISTS
+(SELECT *
+ FROM dbo.sysobjects
+ WHERE id = object_id(N'dbo.psNomTableJoueur')
+       AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+  DROP PROCEDURE dbo.psNomTableJoueur
+GO
+
+CREATE PROCEDURE psNomTableJoueur
+@CodeNationalite CHAR(3)
+AS
+BEGIN
+DECLARE @output int
+EXEC psZoneGeographique @unCodeNationalite='CZE',@unCodeZone=@output OUTPUT
+SELECT @output
+SELECT nomZone
+FROM tblZoneGeographique
+WHERE codeZone = 5
+RETURN
+END
+DECLARE @output2 int
+EXEC psNomTableJoueur @unCodeNationalite='CZE'
+--------#4-------------------
+
