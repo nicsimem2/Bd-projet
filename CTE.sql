@@ -171,14 +171,14 @@ REFERENCES tblTypeResultats(codeResultat)
 ON UPDATE NO ACTION;
 PRINT('foreign key "codeResultat" in "tblResultats" added')
 GO
-
+/*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursAfrique
 FOREIGN KEY(noJoueur)
 REFERENCES tblJoueursAfrique(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
+GO*/
 /*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursANord
@@ -187,15 +187,15 @@ REFERENCES tblJoueursAmeriqueNord(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
 GO*/
-
+/*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursASud
 FOREIGN KEY(noJoueur)
 REFERENCES tblJoueursAmeriqueSud(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
-
+GO*/
+/*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursEu
 FOREIGN KEY(noJoueur)
@@ -210,16 +210,15 @@ FOREIGN KEY(noJoueur)
 REFERENCES tblJoueursAsie(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
-
+GO*/
+/*
 ALTER TABLE tblResultats
 ADD CONSTRAINT fk_Resultats_JoueursOcea
 FOREIGN KEY(noJoueur)
 REFERENCES tblJoueursOceanie(noJoueur)
 ON UPDATE NO ACTION;
 PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
-
+GO*/
 PRINT('cheeky breeky')
 GO
 
