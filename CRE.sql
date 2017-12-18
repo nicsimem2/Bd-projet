@@ -136,7 +136,7 @@ IF OBJECT_ID(N'dbo.tblTournoi', N'U') IS NOT NULL
 
 CREATE TABLE tblTournoi
 (
-  noTournoi     INT IDENTITY (0, 1) NOT NULL,
+  noTournoi     INT IDENTITY (1, 1) NOT NULL,
   nomTournoi    VARCHAR(50)         NOT NULL,
   vileTournoi   VARCHAR(50)         NOT NULL,
   paysTournoi   VARCHAR(30)         NOT NULL,

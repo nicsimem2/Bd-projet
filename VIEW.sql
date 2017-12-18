@@ -35,5 +35,7 @@ CREATE VIEW VueClassementJoueurs
   ON dbo.VueListeJoueurs.noJoueur = dbo.tblResultats.noJoueur
 GO
 SELECT * FROM dbo.VueClassementJoueurs
-
-SELECT * FROM dbo.tblResultats
+GO
+DROP VIEW IF EXISTS  VueNbJoueursParContinent
+AS
+SELECT
