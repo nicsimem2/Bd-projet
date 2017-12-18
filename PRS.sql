@@ -11,6 +11,7 @@ IF EXISTS
 GO
 CREATE PROCEDURE psResultatsJoueurs(@noTournoi INT, @noJoueur INT, @anneeTournoi INT) AS
   BEGIN
+  IF EXISTS(SELECT dbo.)
     DECLARE @NbPoints INT, @Gains MONEY
     SELECT
       dbo.tblResultats.nbPoints,

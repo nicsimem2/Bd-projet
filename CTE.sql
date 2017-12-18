@@ -171,56 +171,7 @@ REFERENCES tblTypeResultats(codeResultat)
 ON UPDATE NO ACTION;
 PRINT('foreign key "codeResultat" in "tblResultats" added')
 GO
-/*
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursAfrique
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursAfrique(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO*/
-/*
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursANord
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursAmeriqueNord(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO*/
-/*
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursASud
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursAmeriqueSud(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO*/
-/*
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursEu
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursEurope(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO
 
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursAsie
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursAsie(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO*/
-/*
-ALTER TABLE tblResultats
-ADD CONSTRAINT fk_Resultats_JoueursOcea
-FOREIGN KEY(noJoueur)
-REFERENCES tblJoueursOceanie(noJoueur)
-ON UPDATE NO ACTION;
-PRINT('foreign key "noJoueur" in "tblResultats" added')
-GO*/
-PRINT('cheeky breeky')
-GO
 
 --Afrique check/default
 
@@ -302,11 +253,6 @@ CHECK ( pointsJoueur >=0);
 PRINT('Check "pointsJoueur" plus grand que 0 dans "tblJoueursAsie".')
 GO
 
---ALTER TABLE tblNationalite
---ADD CONSTRAINT ck_Nationalite_code
---CHECK wtf Count nb of characters in codeNationalite
---PRINT('check "codeNationalite" =char(3) dans "tblNationalite".')
---GO
 
 --tblZoneGeo
 ALTER TABLE tblZoneGeographique

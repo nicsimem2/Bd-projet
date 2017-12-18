@@ -1,3 +1,4 @@
+USE ProjetBD2017
 DROP VIEW IF EXISTS dbo.VueListeJoueurs
 GO
 CREATE VIEW dbo.VueListeJoueurs
