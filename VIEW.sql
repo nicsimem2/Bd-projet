@@ -69,4 +69,39 @@ CREATE VIEW dbo.VueNbNationaliteParContinent
         ON dbo.tblNationalite.codeZone = dbo.tblZoneGeographique.codeZone
     GROUP BY dbo.tblZoneGeographique.nomZone, dbo.tblZoneGeographique.codeZone
 GO
-SELECT * FROM dbo.VueNbNationaliteParContinent
+SELECT *
+FROM dbo.VueNbNationaliteParContinent
+GO
+DROP VIEW IF EXISTS dbo.VueMoyenneBourseTournoi
+GO
+CREATE VIEW dbo.VueMoyenneBourseTournoi
+  AS
+    SELECT AVG(dbo.tblTournoi.bourseTournoi) AS Moyenne
+    FROM tblTournoi
+GO
+SELECT *
+FROM dbo.VueMoyenneBourseTournoi
+GO
+DROP VIEW IF EXISTS dbo.VueResultatsJoueurs
+GO
+CREATE VIEW dbo.VueResultatsJoueurs
+  AS
+    SELECT
+      dbo.VueListeJoueurs.noJoueur,
+      dbo.VueListeJoueurs.nomJoueur,
+      dbo.VueListeJoueurs.prenomJoueur,
+      dbo.tblTournoi.nomTournoi,
+      dbo.tblTypeResultats.nomResultat,
+      dbo.tblResultats.anneeTournoi,
+      dbo.tblResultats.gains,
+      dbo.tblResultats.nbPoints
+    FROM dbo.VueListeJoueurs
+      JOIN dbo.tblTypeResultats
+      JOIN dbo.tblResultats
+      JOIN dbo.tblTournoi
+        ON dbo.tblTournoi.noTournoi = dbo.tblResultats.noTournoi
+        ON dbo.tblTypeResultats.codeResultat = dbo.tblResultats.codeResultat
+        ON dbo.tblResultats.noJoueur = VueListeJoueurs.noJoueur
+GO
+SELECT * FROM dbo.VueResultatsJoueurs
+GO
